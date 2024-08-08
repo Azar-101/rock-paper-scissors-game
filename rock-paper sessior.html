@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <style>
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212; /* Dark mode default background */
+    color: #fff; /* Dark mode default text color */
+    margin: 0;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+body[theme="light"] {
+    background-color: skyblue;
+    color: #000;
+}
+
+.game-container {
+    text-align: center;
+    background-color: #1E1E1E; /* Dark mode container background */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body[theme="light"] .game-container {
+    background-color: white;
+    color: #000;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+.choices {
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px; /* Space between buttons */
+}
+
+.choice {
+    width: 100px; /* Size of the round button */
+    height: 100px; /* Size of the round button */
+    border-radius: 50%; /* Makes the button round */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-size: 50px; /* Emoji size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+}
+
+.choice:hover {
+    background-color: #45a049;
+}
+
+body[theme="dark"] .choice {
+    background-color: #BB86FC;
+    color: white;
+}
+
+body[theme="dark"] .choice:hover {
+    background-color: #9b66e8;
+}
+
+.result {
+    margin-top: 40px;
+}
+
+.result h2 {
+    font-size: 36px;
+}
+
+.result p {
+    font-size: 24px;
+}
+
+.choices-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* Increased gap between the choices */
+    margin-top: 20px;
+}
+
+.choice-item {
+    display: flex;
+    flex-direction: column; /* Align text below emoji */
+    justify-content: center;
+    align-items: center;
+    width: 120px; /* Fixed width of the container */
+    height: 120px; /* Fixed height of the container */
+}
+
+.choice-item span {
+    font-size: 90px; /* Emoji size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Full width of container */
+    height: 100%; /* Full height of container */
+
+}
+
+.choice-item p {
+    font-size: 18px; /* Text size */
+    margin: 10px 0 0;
+    color: #000; /* Default text color */
+}
+
+/* Dark Mode Styles */
+body[theme="dark"] .choice-item p {
+    color: #fff; /* White text color in dark mode */
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 32px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s;
+}
+
+.theme-toggle-container:hover {
+    transform: scale(1.1);
+}
+
+    </style>
+</head>
+<body theme="light">
+    <div class="theme-toggle-container">🌞</div>
+    <div class="game-container">
+     
+
+        <div class="result">
+            <h2 id="result-message">Make your move!</h2>
+            <div class="choices-display">
+                <div class="choice-item" id="player-choice-container">
+                    <span id="player-choice">🤔</span>
+                    <p>Player Choice</p>
+                </div>
+                <div class="choice-item" id="computer-choice-container">
+                    <span id="computer-choice">🤔</span>
+                    <p>Computer Choice</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="choices">
+            <button class="choice" data-choice="rock">✊</button>
+            <button class="choice" data-choice="paper">✋</button>
+            <button class="choice" data-choice="scissors">✌</button>
+        </div>
+        <h1>Rock Paper Scissors</h1>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    const choices = document.querySelectorAll('.choice');
+    const resultMessage = document.getElementById('result-message');
+    const playerChoiceDisplay = document.getElementById('player-choice');
+    const computerChoiceDisplay = document.getElementById('computer-choice');
+    const themeToggleContainer = document.querySelector('.theme-toggle-container');
+    const body = document.body;
+
+    const choicesArray = ['rock', 'paper', 'scissors'];
+
+    // Set default emojis before game starts
+    playerChoiceDisplay.textContent = '🤔'; // Default player choice emoji
+    computerChoiceDisplay.textContent = '🤔'; // Default computer choice emoji
+
+    choices.forEach(choice => {
+        choice.addEventListener('click', () => {
+            const playerChoice = choice.getAttribute('data-choice');
+            const computerChoice = getComputerChoice();
+            const result = getResult(playerChoice, computerChoice);
+
+            playerChoiceDisplay.textContent = getEmoji(playerChoice);
+            computerChoiceDisplay.textContent = getEmoji(computerChoice);
+            resultMessage.textContent = result;
+        });
+    });
+
+    themeToggleContainer.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        body.setAttribute('theme', newTheme);
+        themeToggleContainer.textContent = newTheme === 'light' ? '🌞' : '🌜';
+    });
+
+    function getComputerChoice() {
+        const randomIndex = Math.floor(Math.random() * choicesArray.length);
+        return choicesArray[randomIndex];
+    }
+
+    function getResult(playerChoice, computerChoice) {
+        if (playerChoice === computerChoice) {
+            return "It's a tie!";
+        } else if (
+            (playerChoice === 'rock' && computerChoice === 'scissors') ||
+            (playerChoice === 'paper' && computerChoice === 'rock') ||
+            (playerChoice === 'scissors' && computerChoice === 'paper')
+        ) {
+            return "You win!";
+        } else {
+            return "You lose!";
+        }
+    }
+
+    function getEmoji(choice) {
+        switch (choice) {
+            case 'rock':
+                return '✊';
+            case 'paper':
+                return '✋';
+            case 'scissors':
+                return '✌';
+        }
+    }
+});
+
+    </script>
+</body>
+</html>
