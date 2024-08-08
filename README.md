@@ -1,6 +1,4 @@
-Here's a polished version of your README for GitHub:
 
----
 
 # Rock Paper Scissors Game
 
