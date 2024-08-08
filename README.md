@@ -1,32 +1,49 @@
-Rock Paper Scissors Game
-Description
-This is a simple and interactive Rock Paper Scissors game built with HTML, CSS, and JavaScript. The game allows users to play against the computer by selecting one of three choices: Rock, Paper, or Scissors. The computer's choice is randomly generated, and the game determines the winner based on standard Rock Paper Scissors rules.
+Here's a polished version of your README for GitHub:
 
-Features
-Interactive Gameplay: Click on the buttons to make your choice. The computer's choice is displayed along with the result of the game (Win, Lose, or Tie).
-Dynamic Themes: Toggle between light and dark themes to enhance visual experience.
-Emoji Choices: Choices are represented by emojis for a fun and intuitive user experience.
-Responsive Design: The game interface is designed to be centered and responsive, providing a smooth experience on various screen sizes.
-Technologies Used
-HTML: Structure of the game interface.
-CSS: Styling for light and dark themes, button styles, and layout.
-JavaScript: Game logic, theme switching, and event handling.
-How to Play
-Start the Game: Choose Rock, Paper, or Scissors by clicking on the corresponding button.
-View Results: The computer's choice is displayed, and the result is shown (Win, Lose, or Tie).
-Toggle Theme: Click the sun or moon icon in the top right corner to switch between light and dark modes.
-Installation
+---
+
+# Rock Paper Scissors Game
+
+## Description
+This is a simple and interactive Rock Paper Scissors game built with HTML, CSS, and JavaScript. Players can compete against the computer by selecting Rock, Paper, or Scissors. The computer’s choice is randomly generated, and the game determines the winner based on traditional Rock Paper Scissors rules.
+
+## Features
+- **Interactive Gameplay**: Click on the buttons to make your choice. The computer's choice is displayed along with the result of the game (Win, Lose, or Tie).
+- **Dynamic Themes**: Toggle between light and dark themes for a personalized visual experience.
+- **Emoji Choices**: Choices are represented by emojis for an engaging and intuitive user experience.
+- **Responsive Design**: The game interface is centered and responsive, providing a smooth experience on various screen sizes.
+
+## Technologies Used
+- **HTML**: Structure of the game interface.
+- **CSS**: Styling for light and dark themes, button styles, and layout.
+- **JavaScript**: Game logic, theme switching, and event handling.
+
+## How to Play
+1. **Start the Game**: Choose Rock, Paper, or Scissors by clicking on the corresponding button.
+2. **View Results**: The computer's choice is displayed, and the result is shown (Win, Lose, or Tie).
+3. **Toggle Theme**: Click the sun or moon icon in the top right corner to switch between light and dark modes.
+
+## Installation
 To run this game locally:
 
-Clone the Repository:
-git clone https://github.com/Azar-101/rock-paper-scissors-gmae
-cd rock-paper-scissors
+1. Clone the Repository:
+    ```bash
+    git clone https://github.com/Azar-101/rock-paper-scissors-game.git
+    ```
 
-Open index.html in Your Browser to play the game.
+2. Navigate to the Project Directory:
+    ```bash
+    cd rock-paper-scissors-game
+    ```
 
-Contributing
+3. Open `index.html` in your browser to play the game.
+
+## Contributing
 Feel free to submit issues or pull requests. Contributions are welcome!
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+---
+
+Feel free to adjust any details to better fit your project or personal preferences!
